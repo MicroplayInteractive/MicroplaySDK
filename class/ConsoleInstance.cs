@@ -16,7 +16,7 @@ namespace ModuleWorker
             {
                 using NamedPipeClientStream pipeClient = new(".", "mconnect", PipeDirection.Out);
                 StreamString streamString = new(pipeClient);
-                Span<Byte> buffer = new(new byte[Environment.GetCommandLineArgs()[2].Length]);
+                Span<Byte> buffer = new(new byte[module64.Length]);
                 if (Convert.TryFromBase64String(module64, buffer, out int con))
                 {
                     pipeClient.Connect();
